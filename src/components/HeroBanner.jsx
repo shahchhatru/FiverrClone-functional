@@ -10,7 +10,6 @@ const HeroBanner = () => {
   useEffect(()=>{
     const interval = setInterval(()=>{
       setImage(image>=6?1:image+1);
-      console.log(image)
 
       return ()=>clearInterval(interval)
     },10000)
