@@ -8,12 +8,14 @@ import JoinFiverr from '@/components/JoinFiverr'
 import Everything from '@/components/Everything'
 import Services from '@/components/Services'
 import AuthWrapper from '@/components/AuthWrapper'
-
+import {useStateProvider} from '../context/StateContext';
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const [{showLoginModal,showSignupModal}]=useStateProvider()
+
   return (
     <main>
     <HeroBanner/>
@@ -23,7 +25,10 @@ export default function Home() {
     <Services/>
     <FiverrBusiness/>
     <JoinFiverr/>
-    <AuthWrapper/>
+    {
+      (showLoginModal || showSignupModal ) &&  <AuthWrapper type={showLoginModal?'login':"signup"} />
+    }
+    
     
      </main>
   )
